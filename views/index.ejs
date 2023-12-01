@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cricket Data</title>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>IPL T20 2023 Data</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Match</th>
+        <th>Date</th>
+        <th>result</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% fixtures.results.forEach(function(fixture) { %>
+        <tr>
+          <td><%= fixture.match_title %></td>
+          <td><%= fixture.date ? fixture.date.slice(0, 10) : 'N/A' %></td>
+          <td><%= fixture.result ? fixture.result : 'N/A' %></td>
+          <td><%= fixture.venue ? fixture.venue : 'N/A' %></td>
+        </tr>
+      <% }); %>
+      
+    </tbody>
+  </table>
+</body>
+</html>

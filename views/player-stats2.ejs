@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Stats</title>
+</head>
+
+<body>
+    <!-- Section 1: Player Info -->
+    <div class="player-info">
+        <img class="player-image" src="<%= player.data.playerImg %>" alt="<%= player.data.name %>">
+        <div class="player-details">
+            <h2><%= player.data.name %></h2>
+            <p>Country: <%= player.data.country %></p>
+            <p>Role: <%= player.data.role %></p>
+            <p>Batting Style: <%= player.data.battingStyle %></p>
+            <p>Bowling Style: <%= player.data.bowlingStyle %></p>
+        </div>
+    </div>
+
+    <!-- Section 2: Player Stats Matrix -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Stat</th>
+                <% const uniqueMatchtypes = Array.from(new Set(player.data.stats.map(stat => stat.matchtype))); %>
+                <% uniqueMatchtypes.forEach(matchtype => { %>
+                    <th><%= matchtype %></th>
+                <% }); %>
+            </tr>
+        </thead>
+        <tbody>
+            <% const uniqueStats = Array.from(new Set(player.data.stats.map(stat => stat.stat))); %>
+            <% uniqueStats.forEach(stat => { %>
+                <tr>
+                    <td><%= stat %></td>
+                    <% uniqueMatchtypes.forEach(matchtype => { %>
+                        <% const matchingStat = player.data.stats.find(s => s.matchtype === matchtype && s.stat === stat); %>
+                        <td><%= matchingStat ? matchingStat.value : '' %></td>
+                    <% }); %>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+
+</html>

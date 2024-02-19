@@ -19,4 +19,11 @@ Deployment on azure app service
 - install node modules
 - zip the dir and uplod file direclty to azure web app production slot
 - **Optional**: create an azdevops project as an upstream and set up a ci/cd pipeline along with a release task using 'azureRM web app deploy'
+
+Docker
+- clone the repo
+- run the docker create command agains the root (make sure the api keys are in place beforehand)
+- run the container locally or an azure container app or aws app runner etc (not worth any orchestration here)
+
+  this could either be a useful way to test out some hosting solutions on aws / azure or could be a fun app devlopment project to try things out (user authentication?)
   
